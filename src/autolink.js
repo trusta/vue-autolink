@@ -38,17 +38,17 @@ function parseEmbed (opts, embed) {
 }
 
 export default {
-  props: ['class', 'style', 'content', 'embed', 'image', 'link-attr', 'image-attr', 'safe'],
-  template: '<div :class="class" :style="style">{{{ content | autolink }}}</div>',
-  filters: {
-    autolink (val) {
+  props: ['content', 'embed', 'image', 'link-attr', 'image-attr', 'safe'],
+  template: '<div v-html="autoLinkContent"></div>',
+  computed: {
+    autoLinkContent: function () {
       let opts = {}
       opts.image = defaultTrue(this.image)
       opts = parseEmbed(opts, this.embed)
       opts.linkAttr = this.linkAttr
       opts.imageAttr = this.imageAttr
       opts.safe = defaultFalse(this.safe)
-      return autoLink(val, opts)
+      return autoLink(this.content, opts)
     }
   }
 }

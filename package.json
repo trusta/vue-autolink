@@ -1,8 +1,8 @@
 {
   "name": "vue-autolink",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Auto-link url and images in Vue components",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo 'lol'",
     "build": "babel src --out-dir ./ && rm app.js",
